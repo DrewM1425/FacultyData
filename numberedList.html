@@ -1,0 +1,23 @@
+<html>
+<head>
+    <script src="faculty.js" ></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    
+</head>
+<body>
+    
+    
+    
+    
+</body>
+<script>
+d3.select("body")
+  .append("ol")
+  .selectAll("li")
+    .data(employees)
+    .enter()
+  .append("li")
+    .text(function(employee) 
+          {return employee.lastName;});
+</script>
+</html>

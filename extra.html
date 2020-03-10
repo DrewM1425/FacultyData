@@ -1,0 +1,50 @@
+<html>
+<head>
+    <script src="faculty.js" ></script>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    
+</head>
+<body>
+    <h1>
+        Centre Faculty
+    </h1>
+    <p>Click for more information. I'd suggest clicking several.</p>
+    <table>
+    </table>    
+    
+    
+    
+</body>
+<script>
+    var rows = d3.select("table")
+      .selectAll("tr")
+        .data(employees)
+        .enter()
+      .append("tr");
+    
+    
+    rows.append("img")
+        .attr("src",function(employee)
+             {return employee.photo;})
+        .style("display","block")
+        .style("margin","20px")
+        .style("width","100px")
+        .on("mouseover", function(){
+            d3.select(this)
+                .style("transform","scale(1.25,1.25)");
+        })
+        .on("mouseleave", function(){
+            d3.select(this)
+                .style("transform","scale(1,1)")})
+        .on("click", function(){
+        d3.select(".active")
+          .remove();
+        d3.select(this.parentNode).append("td")
+                .text(function(employee){return employee.firstName+' '+employee.lastName;})
+                .classed("active", true);
+        });
+      
+    
+</script>
+    
+</html>
